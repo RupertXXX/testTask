@@ -1,0 +1,24 @@
+.main{
+    margin: 100px 0 0 0;
+}
+.title{
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+}
+.register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.registering_button{
+    height: 40px;
+    width: 200px;
+    background-color: rgba(116, 116, 116, 0.4);
+    border: 0.5px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+}
