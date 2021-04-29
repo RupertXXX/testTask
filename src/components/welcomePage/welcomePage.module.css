@@ -1,0 +1,22 @@
+.main{
+    margin: 20vh 0 0 0;
+}
+.title{
+    font-size: 35px;
+    font-weight: 600;
+}
+.title span{
+    color: rgb(94,211,243);
+}
+.full_name{
+    font-size: 30px;
+    margin: 5px 0 15px 0;
+}
+.birth_date{
+    font-size: 22px;
+    font-weight: 200;
+}
+.email{
+    font-size: 22px;
+    font-weight: 200;
+}

@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
-import { setUserInfoCreateAction, setIsRegisteredCreateAction } from '../../redux/reducers/registerReducer';
 import withErrorBoundary from '../../components/HOCs/withErrorBoundary';
 import {compose} from 'redux';
-import Register from './register';
+import WelcomePage from './welcomePage';
 
 const mapStateToProps = (state) => {
     return {
@@ -12,16 +11,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        setUserInfo: (userInfo) => {
-            dispatch(setUserInfoCreateAction(userInfo))
-        },
-        setIsRegistered: (isRegistered) => {
-            dispatch(setIsRegisteredCreateAction(isRegistered))
-        },
-    }
+    return {}
 }
 
 export default compose( withErrorBoundary, 
                         connect(mapStateToProps, mapDispatchToProps)
-                        )(Register);
+                        )(WelcomePage);

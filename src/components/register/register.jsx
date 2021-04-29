@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { reduxForm, Field, reset } from 'redux-form';
+import { Redirect } from 'react-router-dom';
+import { reduxForm, Field } from 'redux-form';
+//import { reset } from 'redux-form';
 import { maxLengthCreator, minLengthCreator, required } from '../../common/validators/validators';
-import c from './register.module.css';
 import { InputText, InputEmail, InputPassword, InputDate } from '../../common/formControls/formControls';
+import c from './register.module.css';
 
 const maxLength30 = maxLengthCreator(30);
 const minLengthCreator3 = minLengthCreator(3);
@@ -18,15 +20,18 @@ const RegisterForm = (props) => {
         <Field validate={[required, maxLength30]} name='email' placeholder="Введите email" component={InputEmail} />
         <Field validate={[required, maxLength30, minLengthCreator6]} name='password' placeholder="Введите пароль" component={InputPassword} />
         <Field validate={[required, maxLength30, minLengthCreator6]} name='repeatPassword' placeholder="Повторите пароль" component={InputPassword} />
+        {
+            props.isSamePasswords || <div className={c.passwords_error}> <span>Пароли не одинаковые</span> </div>
+        }
         <button name='Submit' className={c.registering_button}>Зарегестрироваться</button>
     </form>
     )
 }
 const RegisterFormWithRedux = reduxForm({form: 'registerForm'})(RegisterForm);
 
-const Register = ({setUserInfo}) => {
+const Register = ({ setUserInfo, setIsRegistered, isRegistered }) => {
 
-    const [isRegistered, setIsRegistered] = useState(false);
+    const [isSamePasswords, setIsSamePasswords] = useState(true);
 
     const registering = (formData, dispatch) => {
         if(formData.password === formData.repeatPassword){
@@ -38,7 +43,11 @@ const Register = ({setUserInfo}) => {
                 email: formData.email,
             }
             setUserInfo(userInfo);
-            dispatch(reset('registerForm'));
+            setIsRegistered(true);
+            //dispatch(reset('registerForm'));
+        }
+        else{
+            setIsSamePasswords(false);
         }
     }
 
@@ -47,11 +56,10 @@ const Register = ({setUserInfo}) => {
         {
             isRegistered
             ?
-                <div></div>
+                <Redirect to='/welcome' />
             :
-            <RegisterFormWithRedux onSubmit={registering} />
-                
-            }
+                <RegisterFormWithRedux onSubmit={registering} isSamePasswords={isSamePasswords} />
+        }
     </div>
 }
 

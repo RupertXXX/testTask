@@ -2,7 +2,6 @@ import React from 'react';
 import c from './formControls.module.css';
 
 export const InputText = ({input, meta, ...props}) => {
-    console.log(meta);
     return(
         <>
             <input type="text" className={ 
