@@ -9,14 +9,13 @@ class ErrorBoundary extends React.Component {
     componentDidCatch (error, info) {
         this.setState({hasError: true, error})
     }
-
     render(){
         return ( 
         <>
             { this.state.hasError
                 ? 
                 <div className={c.main}>
-                    <div className={c.text}> Oops! This {this.props.name} has <span>error</span> =( </div>
+                    <div className={c.text}> Oops! This webpage has <span>error</span> =( </div>
                     <button className={c.btn} onClick={() => console.log(this.state.error)}>Report a bug</button>
                 </div>
                 : 

@@ -22,8 +22,8 @@ class App extends PureComponent {
       <div className={c.app}>
         <Switch>
           <Route exact path='/' render={ () => <Redirect to='/register' /> } />
-          <Route path='/register' render={ () => <ErrorBoundary  name="webpage"> <RegisterContainer /> </ErrorBoundary> } />
-          <Route path='/welcome' render={ () => <ErrorBoundary  name="webpage"> <WelcomePageContainer /> </ErrorBoundary> } />
+          <Route path='/register' render={ () => <ErrorBoundary> <RegisterContainer /> </ErrorBoundary> } />
+          <Route path='/welcome' render={ () => <ErrorBoundary> <WelcomePageContainer /> </ErrorBoundary> } />
           <Route path='*' render={ () => <NotFound /> } /> 
         </Switch>
       </div>

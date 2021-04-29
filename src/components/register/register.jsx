@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
-//import { reset } from 'redux-form';
 import { maxLengthCreator, minLengthCreator, required } from '../../common/validators/validators';
 import { InputText, InputEmail, InputPassword, InputDate } from '../../common/formControls/formControls';
 import c from './register.module.css';
@@ -15,7 +14,7 @@ const RegisterForm = (props) => {
     <form onSubmit={props.handleSubmit} className={c.register}>
         <Field validate={[required, maxLength30, minLengthCreator3]} name='name' placeholder="Введите своё имя" component={InputText} />
         <Field validate={[required, maxLength30, minLengthCreator3]} name='secondName' placeholder="Введите свою фамилию" component={InputText} />
-        <Field validate={[required, maxLength30, minLengthCreator3]} name='fatherName' placeholder="Введите своё отчество (если есть)" component={InputText} />
+        <Field validate={[required, maxLength30, minLengthCreator3]} name='fatherName' placeholder="Введите своё отчество" component={InputText} />
         <Field validate={[required, maxLength30, minLengthCreator3]} name='birthDate' placeholder="Выберите дату рождения" component={InputDate} />
         <Field validate={[required, maxLength30]} name='email' placeholder="Введите email" component={InputEmail} />
         <Field validate={[required, maxLength30, minLengthCreator6]} name='password' placeholder="Введите пароль" component={InputPassword} />
@@ -44,13 +43,11 @@ const Register = ({ setUserInfo, setIsRegistered, isRegistered }) => {
             }
             setUserInfo(userInfo);
             setIsRegistered(true);
-            //dispatch(reset('registerForm'));
         }
         else{
             setIsSamePasswords(false);
         }
     }
-
     return <div className={c.main}>
         <div className={c.title}>Регистрация</div>
         {

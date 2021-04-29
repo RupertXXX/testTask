@@ -6,7 +6,6 @@ import Register from './register';
 
 const mapStateToProps = (state) => {
     return {
-        userInfo: state.register.userInfo,
         isRegistered: state.register.isRegistered,
     }
 }
