@@ -1,5 +1,3 @@
-//import {stopSubmit} from 'redux-form';
-
 const SET_USER_INFO = "SET_USER_INFO";
 const SET_IS_REGISTERED = "SET_IS_REGISTERED"
 
